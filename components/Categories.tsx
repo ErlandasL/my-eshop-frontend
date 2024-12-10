@@ -26,8 +26,8 @@ const Categories: FC<CategoriesProps> = ({ categories }) => {
             </div>
 
             {/* Subcategories (visible on hover) */}
-            {category.subcategories.length > 0 && (
-              <div className="absolute z-10 left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            {/* {category.subcategories.length > 0 && (
+              <div className="absolute z-10 left-[223px] top-0 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
                 {category.subcategories.map((sub) => (
                   <div
                     key={sub.id}
@@ -37,15 +37,16 @@ const Categories: FC<CategoriesProps> = ({ categories }) => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
 
             {/* Rendering subcategories dynamically if any */}
             {getSubcategories(category.id).length > 0 && (
-              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute z-10 left-[223px] top-0 w-48 bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-opacity group-hover:pointer-events-auto pointer-events-none">
                 {getSubcategories(category.id).map((sub) => (
                   <div
                     key={sub.id}
                     className="px-4 py-2 hover:bg-gray-200 cursor-pointer text-gray-700"
+                    onClick={(event) => event.stopPropagation()}
                   >
                     {sub.name}
                   </div>
